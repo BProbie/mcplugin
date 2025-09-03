@@ -3,6 +3,7 @@
 <br>
 <br>
 
+# 简介
 ## 下载: https://github.com/BProbie/mcplugin/tree/EasyTpa/release
 ## 功能: 最简单的tpa传送请求功能
 ## 插件目的: 以最轻量的插件简约地实现tpa请求传送
