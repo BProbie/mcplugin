@@ -1,0 +1,4 @@
+name: AutoOP
+version: '1.0-SNAPSHOT'
+main: com.probie.Main
+api-version: '1.21'
