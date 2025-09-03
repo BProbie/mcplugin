@@ -1,0 +1,5 @@
+com\probie\Command\TpacceptCommand.class
+com\probie\Main.class
+com\probie\Command\CommandTab.class
+com\probie\Command\TpaCommand.class
+com\probie\Event\PlayerJoinSendMsgEvent.class

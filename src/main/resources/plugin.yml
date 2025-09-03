@@ -1,0 +1,13 @@
+name: EasyTpa
+version: '1.0'
+main: com.probie.Main
+api-version: '1.21'
+
+commands:
+  tpa:
+    usage: /tpa [player]
+    description: From me to player
+
+  tpaccept:
+    usage: /tpaccept
+    description: Accept tpa
