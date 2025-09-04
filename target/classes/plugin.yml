@@ -1,0 +1,12 @@
+name: GuessNumber
+version: '1.0-SNAPSHOT'
+main: com.probie.Main
+api-version: '1.21'
+authors: [ Probie ]
+description: 猜数字
+website: https://github.com/BProbie
+
+commands:
+  guess-num:
+    usage: /usage <start/restart/stop/delay/range> [num]
+    description: To control the guess number system
