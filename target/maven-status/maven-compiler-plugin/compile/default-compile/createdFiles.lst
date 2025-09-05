@@ -1,0 +1,16 @@
+com\probie\Event\PlayerChessEvent.class
+com\probie\Main.class
+com\probie\Manager\ThreeChessInviteManager$1.class
+com\probie\Packet\ThreeChessGamePacket.class
+com\probie\Manager\ThreeChessGameManager.class
+com\probie\Packet\ThreeChessInvitePacket.class
+com\probie\Manager\ThreeChessAcceptManager.class
+com\probie\Command\ThreeChessInviteCommand.class
+com\probie\Command\ThreeChessAcceptCommand.class
+com\probie\Event\PlayerCloseChessEvent.class
+com\probie\Manager\ThreeChessInviteManager.class
+com\probie\Event\PlayerJoinSendMessageEvent.class
+com\probie\Packet\ThreeChessPacket.class
+com\probie\Data.class
+com\probie\Manager\ThreeChessManager.class
+com\probie\Packet\ThreeChessAcceptPacket.class

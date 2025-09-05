@@ -1,0 +1,16 @@
+name: ThreeChess
+version: '1.0-SNAPSHOT'
+main: com.probie.Main
+api-version: '1.21'
+authors: [ Probie ]
+description: 三子棋
+website: https://github.com/BProbie
+
+commands:
+  threechess-invite:
+    usage: /threechess-invite [player]
+    description: Invite player to play three chess
+
+  threechess-accept:
+    usage: /threechess-accept
+    description: Accept the invitation
