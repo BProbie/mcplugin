@@ -1,4 +1,4 @@
-# ThreeChess
+# ThreeChess (力推！)
 
 <br>
 <br>
