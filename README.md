@@ -1,4 +1,4 @@
-# ThreeChess
+# ThreeChess (大力推荐!)
 
 <br>
 <br>
