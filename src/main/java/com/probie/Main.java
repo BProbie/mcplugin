@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.probie.Event.PlayerChessEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import com.probie.Event.PlayerCloseChessEvent;
+import com.probie.Command.ThreeChessSizeCommand;
 import com.probie.Command.ThreeChessAcceptCommand;
 import com.probie.Command.ThreeChessInviteCommand;
 import com.probie.Event.PlayerJoinSendMessageEvent;
@@ -20,6 +21,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerCloseChessEvent(), this);
         Objects.requireNonNull(this.getCommand("threechess-invite")).setExecutor(new ThreeChessInviteCommand());
         Objects.requireNonNull(this.getCommand("threechess-accept")).setExecutor(new ThreeChessAcceptCommand());
+        Objects.requireNonNull(this.getCommand("threechess-size")).setExecutor(new ThreeChessSizeCommand());
         this.getLogger().info(Data.getMessageHead()+"加载成功");
     }
 

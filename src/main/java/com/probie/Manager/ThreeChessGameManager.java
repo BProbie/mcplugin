@@ -18,6 +18,8 @@ public class ThreeChessGameManager extends ThreeChessManager {
         ThreeChessGamePacket gamePacket = new ThreeChessGamePacket(sendPlayer, acceptPlayer);
         sendPlayer.openInventory(gamePacket.getInventory());
         acceptPlayer.openInventory(gamePacket.getInventory());
+        sendPlayer.playSound(sendPlayer.getLocation(), Data.getOpenSound(), 1.0f, 1.0f);
+        acceptPlayer.playSound(acceptPlayer.getLocation(), Data.getOpenSound(), 1.0f, 1.0f);
         getGamePackets().add(gamePacket);
     }
 
@@ -43,6 +45,8 @@ public class ThreeChessGameManager extends ThreeChessManager {
                 break;
             }
         }
+        gamePacket.getPlayer1().playSound(gamePacket.getPlayer1().getLocation(), Data.getDownSound(), 1.0f, 1.0f);
+        gamePacket.getPlayer2().playSound(gamePacket.getPlayer2().getLocation(), Data.getDownSound(), 1.0f, 1.0f);
         win(gamePacket);
     }
 
@@ -50,52 +54,75 @@ public class ThreeChessGameManager extends ThreeChessManager {
         Inventory inventory = gamePacket.getInventory();
         for (int i = 0; i < inventory.getSize(); i++) {
             try {
-                // 横
-                if (inventory.getItem(i).getType() == inventory.getItem(i+1).getType()) {
-                    if (inventory.getItem(i+1).getType() == inventory.getItem(i+2).getType()) {
-                        if (inventory.getItem(i).getType() == Data.getSeat1().getType()) {
-                            gamePacket.setIsFinish(true);
-                            praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
-                            return;
-                        }
-                        else if (inventory.getItem(i).getType() == Data.getSeat2().getType()) {
-                            gamePacket.setIsFinish(true);
-                            praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
-                            return;
-                        }
-                    }
-                }
-                // 竖
-                if (inventory.getItem(i).getType() == inventory.getItem(i+9).getType()) {
-                    if (inventory.getItem(i+9).getType() == inventory.getItem(i+9+9).getType()) {
-                        if (inventory.getItem(i).getType() == Data.getSeat1().getType()) {
-                            gamePacket.setIsFinish(true);
-                            praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
-                            return;
-                        }
-                        else if (inventory.getItem(i).getType() == Data.getSeat2().getType()) {
-                            gamePacket.setIsFinish(true);
-                            praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
-                            return;
+                try {
+                    // 横
+                    if (inventory.getItem(i).getType() == inventory.getItem(i+1).getType()) {
+                        if (inventory.getItem(i+1).getType() == inventory.getItem(i+2).getType()) {
+                            if (inventory.getItem(i).getType() == Data.getSeat1().getType()) {
+                                gamePacket.setIsFinish(true);
+                                praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
+                                return;
+                            }
+                            else if (inventory.getItem(i).getType() == Data.getSeat2().getType()) {
+                                gamePacket.setIsFinish(true);
+                                praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
+                                return;
+                            }
                         }
                     }
-                }
-                // 斜
-                if (inventory.getItem(i).getType() == inventory.getItem(i+9+1).getType()) {
-                    if (inventory.getItem(i+9+1).getType() == inventory.getItem(i+9+1+9+1).getType()) {
-                        if (inventory.getItem(i).getType() == Data.getSeat1().getType()) {
-                            gamePacket.setIsFinish(true);
-                            praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
-                            return;
-                        }
-                        else if (inventory.getItem(i).getType() == Data.getSeat2().getType()) {
-                            gamePacket.setIsFinish(true);
-                            praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
-                            return;
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
+                try {
+                    // 竖
+                    if (inventory.getItem(i).getType() == inventory.getItem(i+9).getType()) {
+                        if (inventory.getItem(i+9).getType() == inventory.getItem(i+9+9).getType()) {
+                            if (inventory.getItem(i).getType() == Data.getSeat1().getType()) {
+                                gamePacket.setIsFinish(true);
+                                praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
+                                return;
+                            }
+                            else if (inventory.getItem(i).getType() == Data.getSeat2().getType()) {
+                                gamePacket.setIsFinish(true);
+                                praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
+                                return;
+                            }
                         }
                     }
-                }
-            } catch (NullPointerException | ArrayIndexOutOfBoundsException ignored) {}
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
+                try {
+                    // 斜下
+                    if (inventory.getItem(i).getType() == inventory.getItem(i+9+1).getType()) {
+                        if (inventory.getItem(i+9+1).getType() == inventory.getItem(i+9+1+9+1).getType()) {
+                            if (inventory.getItem(i).getType() == Data.getSeat1().getType()) {
+                                gamePacket.setIsFinish(true);
+                                praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
+                                return;
+                            }
+                            else if (inventory.getItem(i).getType() == Data.getSeat2().getType()) {
+                                gamePacket.setIsFinish(true);
+                                praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
+                                return;
+                            }
+                        }
+                    }
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
+                try {
+                    // 斜上
+                    if (inventory.getItem(i).getType() == inventory.getItem(i-9+1).getType()) {
+                        if (inventory.getItem(i-9+1).getType() == inventory.getItem(i-9+1-9+1).getType()) {
+                            if (inventory.getItem(i).getType() == Data.getSeat1().getType()) {
+                                gamePacket.setIsFinish(true);
+                                praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
+                                return;
+                            }
+                            else if (inventory.getItem(i).getType() == Data.getSeat2().getType()) {
+                                gamePacket.setIsFinish(true);
+                                praise(true, gamePacket.getPlayer1(), gamePacket.getPlayer2());
+                                return;
+                            }
+                        }
+                    }
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
+            } catch (NullPointerException ignored) {}
         }
         balance(gamePacket);
     }
@@ -114,12 +141,18 @@ public class ThreeChessGameManager extends ThreeChessManager {
 
     public void praise(boolean isWin, Player winPlayer, Player lostPlayer) {
         if (isWin) {
+            winPlayer.playSound(winPlayer.getLocation(), Data.getWinSound(), 1.0f, 1.0f);
+            lostPlayer.playSound(lostPlayer.getLocation(), Data.getLostSound(), 1.0f, 1.0f);
+
             winPlayer.sendMessage(Data.getSimpleMessageHead()+Data.colorWord("你赢了！"));
             lostPlayer.sendMessage(Data.getSimpleMessageHead()+Data.colorWord("你输了..."));
 
             winPlayer.getInventory().addItem(new ItemStack(Material.DIAMOND));
             winPlayer.getInventory().addItem(new ItemStack(Material.GOLD_INGOT));
         } else {
+            winPlayer.playSound(winPlayer.getLocation(), Data.getBalanceSound(), 1.0f, 1.0f);
+            lostPlayer.playSound(winPlayer.getLocation(), Data.getBalanceSound(), 1.0f, 1.0f);
+
             winPlayer.sendMessage(Data.getSimpleMessageHead()+Data.colorWord("平局"));
             lostPlayer.sendMessage(Data.getSimpleMessageHead()+Data.colorWord("平局"));
 

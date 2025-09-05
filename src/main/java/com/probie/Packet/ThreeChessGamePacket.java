@@ -19,16 +19,37 @@ public class ThreeChessGamePacket extends ThreeChessPacket {
         this.player1 = player1;
         this.player2 = player2;
 
-        Inventory inventory = Bukkit.createInventory(null, 3 * 9, Data.getPluginName());
-        inventory.setItem(3, Data.getSeat0());
-        inventory.setItem(4, Data.getSeat0());
-        inventory.setItem(5, Data.getSeat0());
-        inventory.setItem(3+9, Data.getSeat0());
-        inventory.setItem(4+9, Data.getSeat0());
-        inventory.setItem(5+9, Data.getSeat0());
-        inventory.setItem(3+9+9, Data.getSeat0());
-        inventory.setItem(4+9+9, Data.getSeat0());
-        inventory.setItem(5+9+9, Data.getSeat0());
+        Inventory inventory = Bukkit.createInventory(null, 3*9, Data.getPluginName());
+        if (Data.getUiSize() > 3*9) inventory = Bukkit.createInventory(null, Data.getUiSize(), Data.getPluginName());
+
+        int indexX = (int) Math.floor((double) (9-Data.getChessWidth())/2);
+        int indexY = (int) Math.floor((double) (((int) Math.floor((double) inventory.getSize()/9))-Data.getChessHeight())/2);
+        int width = Data.getChessWidth();
+        if (width < 3) {
+            width = 3;
+        }
+        else if (width > 9) {
+            width = 9;
+        }
+        int height = Data.getChessHeight();
+        if (height < 3) {
+            height = 3;
+        }
+        else if (height > Math.floor((double) inventory.getSize()/9)) {
+            height = (int) Math.floor((double) inventory.getSize()/9);
+        }
+        for (int dy = 0; dy < height; dy++) {
+            for (int dx = 0; dx < width; dx++) {
+                inventory.setItem(indexX+dx + indexY*9+dy*9, Data.getSeat0());
+            }
+        }
+
+        for (int i = 0; i < inventory.getSize(); i++) {
+            if (inventory.getItem(i) == null) {
+                inventory.setItem(i, Data.getSeatDecoration());
+            }
+        }
+
         this.inventory = inventory;
     }
 

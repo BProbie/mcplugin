@@ -14,3 +14,7 @@ commands:
   threechess-accept:
     usage: /threechess-accept
     description: Accept the invitation
+
+  threechess-size:
+    usage: /threechess-set [3-6]
+    description: Check or set the size

@@ -17,12 +17,14 @@ public class PlayerCloseChessEvent implements Listener {
                 if (inventoryCloseEvent.getPlayer().getUniqueId() == gamePacket.getPlayer1().getUniqueId()) {
                     if (inventoryCloseEvent.getPlayer().getUniqueId() != gamePacket.getPlayer2().getUniqueId()) {
                         gamePacket.getPlayer2().closeInventory();
+                        gamePacket.getPlayer2().playSound(gamePacket.getPlayer2().getLocation(), Data.getCloseSound(), 1.0f, 1.0f);
                         gamePacket.getPlayer2().sendMessage(Data.getSimpleMessageHead()+"玩家"+Data.colorPlayerName(inventoryCloseEvent.getPlayer().getName())+"退出了游戏");
                     }
                 }
                 else if (inventoryCloseEvent.getPlayer().getUniqueId() == gamePacket.getPlayer2().getUniqueId()) {
                     if (inventoryCloseEvent.getPlayer().getUniqueId() != gamePacket.getPlayer1().getUniqueId()) {
                         gamePacket.getPlayer1().closeInventory();
+                        gamePacket.getPlayer1().playSound(gamePacket.getPlayer1().getLocation(), Data.getCloseSound(), 1.0f, 1.0f);
                         gamePacket.getPlayer1().sendMessage(Data.getSimpleMessageHead()+"玩家"+Data.colorPlayerName(inventoryCloseEvent.getPlayer().getName())+"退出了游戏");
                     }
                 }

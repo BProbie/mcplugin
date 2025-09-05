@@ -18,10 +18,22 @@ public class PlayerChessEvent implements Listener {
             }
             if (!gamePacket.getIsFinish()) {
                 if (inventoryClickEvent.isLeftClick()) {
-                    System.out.println(inventoryClickEvent.getCurrentItem());
                     try {
                         if (inventoryClickEvent.getCurrentItem().getType() == Data.getSeat0().getType()) {
-                            ThreeChessGameManager.getINSTANCE().chess(gamePacket, inventoryClickEvent.getSlot());
+                            switch (gamePacket.getTurn()) {
+                                case 1: {
+                                    if (inventoryClickEvent.getWhoClicked().getUniqueId() == gamePacket.getPlayer1().getUniqueId()) {
+                                        ThreeChessGameManager.getINSTANCE().chess(gamePacket, inventoryClickEvent.getSlot());
+                                    }
+                                    break;
+                                }
+                                case 2: {
+                                    if (inventoryClickEvent.getWhoClicked().getUniqueId() == gamePacket.getPlayer2().getUniqueId()) {
+                                        ThreeChessGameManager.getINSTANCE().chess(gamePacket, inventoryClickEvent.getSlot());
+                                    }
+                                    break;
+                                }
+                            }
                         }
                     } catch (NullPointerException ignored) {}
                 }

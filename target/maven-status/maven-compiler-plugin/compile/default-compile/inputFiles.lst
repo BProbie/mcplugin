@@ -1,5 +1,6 @@
 D:\minecraftPlugin\work\ThreeChess\src\main\java\com\probie\Command\ThreeChessAcceptCommand.java
 D:\minecraftPlugin\work\ThreeChess\src\main\java\com\probie\Command\ThreeChessInviteCommand.java
+D:\minecraftPlugin\work\ThreeChess\src\main\java\com\probie\Command\ThreeChessSizeCommand.java
 D:\minecraftPlugin\work\ThreeChess\src\main\java\com\probie\Data.java
 D:\minecraftPlugin\work\ThreeChess\src\main\java\com\probie\Event\PlayerChessEvent.java
 D:\minecraftPlugin\work\ThreeChess\src\main\java\com\probie\Event\PlayerCloseChessEvent.java
