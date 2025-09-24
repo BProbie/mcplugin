@@ -1,0 +1,11 @@
+name: LuckyTime
+version: '1.0-SNAPSHOT'
+main: com.probie.Main
+api-version: '1.21'
+authors: [ Probie ]
+website: https://github.com/BProbie
+
+commands:
+  luckytime:
+    usage: /luckytime [empty/set] <second>
+    description: To control the luckytime delay
